@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     // Estado del interruptor
     private boolean luzEncendida = false;
 
+    private androidx.appcompat.widget.SwitchCompat switchModoNoche;
+    private TextView tvTitulo;
+
     // TODO RAMA feature/contador-luces: Declarar variable contador y referencia a tvContador
 
     // TODO RAMA feature/modo-noche: Declarar referencia a switchModoNoche
@@ -38,6 +41,21 @@ public class MainActivity extends AppCompatActivity {
         btnInterruptor = findViewById(R.id.btnInterruptor);
         tvContador = findViewById(R.id.tvContador);
         tvContador.setText(getString(R.string.texto_contador, contadorPulsaciones));
+        tvTitulo = findViewById(R.id.tvTitulo);
+        switchModoNoche = findViewById(R.id.switchModoNoche);
+
+        switchModoNoche.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(android.widget.CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    layoutRaiz.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.fondo_oscuro));
+                    tvTitulo.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.texto_oscuro));
+                } else {
+                    layoutRaiz.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.fondo_claro));
+                    tvTitulo.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.texto_claro));
+                }
+            }
+        });
 
         btnInterruptor.setOnClickListener(new View.OnClickListener() {
             @Override
