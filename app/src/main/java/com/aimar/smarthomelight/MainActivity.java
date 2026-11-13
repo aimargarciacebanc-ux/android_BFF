@@ -16,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvEstadoLuz;
     private Button btnInterruptor;
 
+    private TextView tvContador;
+    private int contadorPulsaciones = 0;
+
     // Estado del interruptor
     private boolean luzEncendida = false;
 
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         layoutRaiz = findViewById(R.id.layoutRaiz);
         tvEstadoLuz = findViewById(R.id.tvEstadoLuz);
         btnInterruptor = findViewById(R.id.btnInterruptor);
+        tvContador = findViewById(R.id.tvContador);
+        tvContador.setText(getString(R.string.texto_contador, contadorPulsaciones));
 
         btnInterruptor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
                     tvEstadoLuz.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.estado_apagado));
                 }
 
-                // TODO RAMA feature/contador-luces: Incrementar contador y actualizar interfaz
+                contadorPulsaciones++;
+                tvContador.setText(getString(R.string.texto_contador, contadorPulsaciones));
             }
         });
 
