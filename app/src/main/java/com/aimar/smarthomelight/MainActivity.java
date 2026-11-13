@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -26,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     private androidx.appcompat.widget.SwitchCompat switchModoNoche;
     private TextView tvTitulo;
-    private Button btnPanico;
 
     // TODO RAMA feature/contador-luces: Declarar variable contador y referencia a tvContador
 
@@ -46,14 +43,6 @@ public class MainActivity extends AppCompatActivity {
         tvContador.setText(getString(R.string.texto_contador, contadorPulsaciones));
         tvTitulo = findViewById(R.id.tvTitulo);
         switchModoNoche = findViewById(R.id.switchModoNoche);
-
-        btnPanico = findViewById(R.id.btnPanico);
-        btnPanico.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.toast_alerta_panico, Toast.LENGTH_LONG).show();
-            }
-        });
 
         switchModoNoche.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
             @Override
